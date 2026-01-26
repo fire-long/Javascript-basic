@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = prompt('과목 수를 입력해주세요');
+        let subject_array = new Array();
+        let score_array = new Array();
+
+        for (i=0;i<num;i++){
+            let sbj = prompt('점수를 입력할 과목명을 입력해주세요 >>');
+            subject_array.push(sbj);
+        }
+        subject_array.push('총합');
+        subject_array.push('평균');
+
+        let total = 0;
+        for (j=0; j<num; j++){
+            let score = Number(prompt(`${subject_array[j]}의 점수 입력>>`));
+            total += score;
+            score_array.push(score);   
+        }
+        score_array.push(total);
+        score_array.push(total/num);
+
+        console.log(subject_array);
+        console.log(score_array);
+        console.log(total);
+
+
+        document.write("<table border='1px solid black'>");
+            document.write("<tr>");
+                subject_array.forEach(e => 
+                    {
+                        document.write(`<td>${e}</td>`);
+                    }
+                )
+            document.write("</tr>");
+            
+            document.write("<tr>");
+                score_array.forEach(e => 
+                    {
+                        document.write(`<td>${e}</td>`);
+                    }
+                )
+            document.write("</tr>");
+        document.write("</table>");
+    </script>
+</body>
+</html>

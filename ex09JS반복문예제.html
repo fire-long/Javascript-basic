@@ -14,6 +14,20 @@
         //ParseInt() 대신 Math.floor() 사용 가능
         //let num = Math.floor(Math.random()*10);
         console.log(num);
+
+        let answer = Math.floor(Math.random()*10);
+        
+        do{
+            let res = prompt('숫자를 입력해주세요!');
+            if(res == answer){
+                alert("정답입니다 축하합니다🎉");
+                break;
+            }else if(res > answer){
+                alert("입력한 숫자보다 작은 수입니다...");
+            }else{
+                alert("입력한 숫자보다 큰 수입니다...");
+            }
+        }while(true)
     </script>
 </body>
 </html>

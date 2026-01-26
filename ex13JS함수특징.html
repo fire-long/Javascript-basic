@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function temp(data1, data2){
+            console.log("확인>>", arguments);
+            return data1 + data2;
+        }
+
+        //1. JS 함수는 매개변수의 자료형태를 검사하지 않는다.
+        console.log(temp(1,2));
+        console.log(temp(1,'2'));
+
+        //2. JS 함수는 매개변수 개수와 입력값의 개수가 동일한지 검사하지 않는다.
+        //-> 내부적으로 arguments(배열과 같은 형태)를 생성해서
+        //   내가 지정한 매개변수의 개수만큼만 저장
+        console.log(temp(1,2,3,4,5));
+
+        //3. 매개변수의 개수가 부족하게 들어가면
+        //   부족한 매개변수 값은 undefined 형태로 정의
+        console.log(temp(1));
+
+        // 지역변수(local variable)
+        // : 특정 영역 안쪽까지만 유효(사용 가능)한 변수를 의미
+
+        //var: 함수 내 선언되면 지역변수, 조건문 및 반복문 블록에선 지역변수 X
+        //let, const: 함수, 조건문, 반복문 {} 내부에서 처음 선언되면 해당 영역에서 벗어나서 쓸 수 X
+        //            -> let과 const가 많이 사용됨
+
+        if(true){
+            var test1 = 1;
+            let test2 = 2;
+        }
+
+        console.log(test1);
+        //console.log(test2);//Uncuaght ReferenceError
+
+        const temp2 = () => {
+            var test3 = 3;
+            let test4 = 4;
+        }
+        
+        //console.log(test3);//Uncuaght ReferenceError
+        //console.log(test4);//Uncuaght ReferenceError
+
+    </script>
+</body>
+</html>
