@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 조건문: if문, if-else문, 다중if문, switch-case문
+        */
+        
+        // 조건문 {} 안쪽에 실행할 구문이 1줄이면 {} 생략 가능 --> "비추천"
+        // 1. if문
+        if(4%2 == 0){
+            // JS는 특정 구문 영역 구분 시 {} 중괄호 사용함
+            // {} == body == 영역 == scope
+            console.log("짝수입니다.");
+        }else if(0 == 0){
+
+        }else{
+            console.log("홀수입니다.");
+        }
+
+        // 2. switch문
+        switch(4){
+            case 1: 
+                console.log("1입니다.");
+            break;
+            case 2:
+                console.log("2입니다.");
+            break;
+            case 3:
+                console.log("3입니다.");
+            break;
+
+            default:
+                console.log("4입니다.");//break 생략 가능
+        }
+        
+    </script>
+    
+</body>
+</html>

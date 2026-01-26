@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 자료형: string, number, boolean, null, undefined
+            string -> '' or ""
+            number -> 정수, 실수 모두 포함
+            boolean -> true or false
+            null -> 아무런 값을 나타내지 않을 때 자료형
+            undefined -> 값이 할당되지 않거나 존재하지 않는 유형일 때 자료형
+        */
+        let data1 = null; //null
+        let data2; //undefined
+        // null -> 연산 가능
+        // undefined -> 연산결과가 NaN(결측치)
+        console.log(data1+data1);//0
+        console.log(data2+data2);//NaN
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 연산자
+            1. 산술연산자: +, -, *, /, %(나머지)(몫 구하는 건 따로 X)
+            2. 대입연산자: =, +=, -=, *=, =, %=
+            3. 증감연산자: ++, --
+            4. 논리연산자: &&m, ||, !
+            5. 비교연산자: ==, !=, ===, !==
+            6. 삼항연산자: 조건식?참실행문:거짓실행문
+            7. 연결연산자: +(문자열 연결)
+        */
+    //비교연산자
+    //(1)동등연산자: 자동으로 자료형 변환
+    console.log(10 == "10");//true -> JS의 특징: 자동 형변환
+    //(2)일치연산자: 자료형까지 같은지 확인
+    console.log(10 === "10");//false
+
+    //숫자끼리만 연산할 수 있는 연산자 사용 시
+    //JS는 자동으로 자료형을 숫자형으로 변환
+    console.log(10 < "17");//true
+    console.log(10 - "4");
+    console.log(10 + "7" + 6);//1076라는 문자로 만들어짐
+    
+
+    //삼항연산자
+    var result = 4 % 2 == 0?"짝수":"홀수";
+    console.log(result);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 반복문: while문, do-while문, for문
+        */
+        while(true){
+            if(4%2 == 0){
+                console.log("종료");
+                break;
+            }
+        }
+        do{
+            console.log("무조건 한 번 실행");
+        }while(false);
+
+        // for(①초기화구문;②조건식;③반복후실행구문){
+        //     ④반복해서 실행할 구문
+        //} 
+        // ①-> ② -> ④-> ③ -> ② -> ④ ...
+        for(let i=0;i<5;i++){ //i++ 생략 시 무한 반복 -> 모든 요소 채울 필욘 없음
+            console.log(i);//i=5로 마무리됨
+        }
+    </script>
+</body>
+</html>

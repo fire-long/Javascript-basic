@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = 312;
+        //(1) 백의 자리 이하 버리는 코드
+        // 백의 자리 이하 값을 구해서 원본 데이터에서 빼주는 법
+        let result = num-(num%100);
+        console.log(`백의 자리 이하 버린 결과>> ${result}`);
+
+        //(2) 백의 자리 숫자만 구하는 방법
+        console.log(parseInt(num / 100) * 100);
+        //JS 자료형 변환
+        //1. parseInt(값)
+        //>>소수점 숫자, 문자 -> 정수 형태로 변환
+        //2. parseFloat(값)
+        //>>숫자, 문자 -> 실수 형태로 변환
+        //3. Number(값)
+        //>>문자 -> 숫자 형태로 변환
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            JS 변수
+            : 데이터를 담을 수 잇는 공간
+
+            JS 변수 선언법
+            : Python처럼 따로 키워드 작성하지 않은 상태로도 선언 가능 -> "비추천"
+            : 변수 선언 키워드를 작성한 상태로 선언 -> "추천"
+        */
+
+        // 1. var: 재선언 가능 키워드
+        var name = "김운비";
+        var name = "박진영";
+        name = "이강희";
+
+        // 2. let: 재선언 불가능 키워드
+        let name2 = "강아지";
+        //let name2 = "고양이";
+        name2 = "카라칼"; //재할당은 가능
+
+        console.log(name);
+        console.log(name2);
+        
+        // 변수 선언 키워드 생략 시 기본적으로  "var" 변수가 만들어짐
+        num = 4;
+        num = 7;
+        console.log(num);
+
+        // 3. const: 재선언 X, 재할당 X -> 일종의 상수.
+        //           불변. 중요한 데이터를 해당 변수에 담기.
+        const num2 = 14;
+        //num2 = 7; //코드에선 문법적 문제 없지만 
+        //실행 후 console에서 TypeError: Assignment to constant variable. 발생
+
+        //확인 및 취소를 통한 입력문 사용
+        //입력 받은 결과를 console에 출력
+        let result = confirm("동의하시겠습니까?");
+        console.log("결과 >> ", result);
+    </script>
+    
+</body>
+</html>
