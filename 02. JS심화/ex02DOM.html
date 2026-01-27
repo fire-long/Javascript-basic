@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="area"></div>
+    <button id="btn">클릭</button>
+    <script>
+        //버튼 클릭시, div 태그 영역 안쪽에 새 h1 태그 생성해보기
+        
+        //1. 필요한 태그 가져오기 -> button, div
+        let btn = document.getElementById('btn');
+        let area = document.getElementById('area');
+
+        //2. 특정 태그 클릭시, 기능 동작시키기
+        //클릭, 더블클릭, hover 같은 사용자가 하는 모든 행위 == 이벤트
+        //태그.onclick = 함수; -> 클릭이 일어날 때마다 동작하는 함수!
+        btn.onclick = () => {
+            // console.log("클릭!");
+            area.innerHTML += "<h1>감기 조심하세요!</h1>";
+        }
+
+
+
+    </script>
+</body>
+</html>

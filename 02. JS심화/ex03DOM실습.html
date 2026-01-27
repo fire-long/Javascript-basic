@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="num">0</p>
+    <button id="btn1">-1 감소</button>
+    <button id="btn2">+1 증가</button>
+
+    <!-- 외부 JS 파일을 포함시키는 방법 -->
+    
+    <!-- JS 파일을 렌더링하는 순서
+        1. 웹 브라우저 시작
+        2. HTML 문서 읽으면서 태그들로 DOM 구성하기
+        3. 태그 중간중간에 만약 JS 파일이 있으면 HTML 문서 읽는 작업을 멈추고 JS를 읽음
+        >> 사용자 입장에서 빈 하얀 화면만 보는 상태가 됨
+        4. 화면에 Painting & Display하는 작업 진행됨
+
+        ※반드시 모든 태그가 다 만들어진 다음인 body 태그 끝나는 지점 위쪽에 JS 파일 만들기
+    --> 
+    <script src="js/click.js"></script>
+</body>
+</html>

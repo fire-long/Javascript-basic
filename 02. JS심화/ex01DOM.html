@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="data" class="temp">JS DOM 다루기</h1>
+    <div id="area" class="temp"></div>
+
+    <script>
+        /*
+            JS DOM (Document Object Model)
+            : HTML 태그들을 내가 원하는 형식으로 제어하도록 돕는 도구
+            : 트리 구조 형식으로 만들어짐
+            : 각 태그를 "노드"라고 부름!
+
+            DOM을 활용해 HTML 문서 내 태그 가져오는 방법
+            1. document.getElementById("id값") **추천**
+            -> 결과 반환 HTML 태그 단 1개
+            2. document.getElementsBy~~("속성값") **추천** -> 속도가 더 빠름
+            -> 결과 반환 HTML 태그 여러 개 반환(like 배열)
+
+            3. document.querySelector("CSS선택자")
+            -> 결과 반환 HTML 태그 단 1개
+            4. document.querySelectorAll("CSS선택자")
+            -> 결과 반환 like 배열
+        */
+
+        //1.HTML 태그를 JS 내부로 가져오기
+        //document.getElementById("id값")
+        //    -> HTMLElement(태그를 JS 객체로 표현한 형태) 반환
+        let h1 = document.getElementById("data");
+        console.log(h1);
+
+        //2. 태그 안쪽 글자를 변경하기
+        console.log(h1.innerText);
+        h1.innerText = 'JS DOM 변경하기';
+
+        //id가 area인 div 태그 안쪽에 h3 태그를 사용해서
+        //'JS 화이팅!' 글자를 추가하기
+
+        //필요한 태그 가져오기
+        let div = document.getElementById('area');
+        //태그 안 쪽에 새 태그 추가하기
+        div.innerHTML = "<h3>JS 화이팅!</h3>";
+
+        //태그를 꺼내오는 또 다른 방법
+        //document.getElementsBy~~~
+        //-> 클래스명, name 속성, 태그이름 등이 기준이 될 수 있다.
+        //-> 중복 가능한 속성들이므로 결과로 반환해주는 타입이 "배열"과 같은 형태로 반환함
+        let temp = document.getElementsByClassName("temp");
+        console.log(temp[0]);
+        
+        let temp1 = document.querySelector("#area");//querySelector는 무조건 하나만 가져옴
+        console.log(temp1);
+
+        let temp2 = document.querySelectorAll(".temp");
+        console.log(temp2);
+
+
+    </script>
+</body>
+</html>

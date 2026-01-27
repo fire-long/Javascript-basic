@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Orbitron:wght@700&family=Song+Myung&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/rock.css">
+</head>
+
+<body>
+    <div align="center">
+        <br>
+        <h1 id = "score">0</h1>
+        <br>
+        <table>
+            <tr>
+                <th>USER</th>
+            </tr>
+            <tr>
+                <td align="center"> <img id="userImg" src="assets/rock.png" alt=""></td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="user">가위</button>
+                    <button class="user">바위</button>
+                    <button class="user">보</button>
+                </td>
+            </tr>
+        </table>
+        &nbsp;&nbsp;&nbsp;
+        <h1>vs</h1>
+        <table class="computer">
+            <tr>
+                <th>COMPUTER</th>
+            </tr>
+            <tr>
+                <td align="center"> <img id='comImg' src="assets/rock.png" alt=""></td>
+            </tr>
+            <tr>
+                <td>
+                    <button>가위</button>
+                    <button>바위</button>
+                    <button>보</button>
+                </td>
+            </tr>
+        </table>
+</div>
+<script>
+    // 이미지 저장할 배열 생성하기
+    let imgs = ["scissors.png", "rock.png", "paper.png"];
+
+    // 1. 필요한 태그들 가져오기
+    // 사용자 이미지
+    let userImg = document.getElementById("userImg");
+    // 사용자 버튼
+    let userBtns = document.getElementsByClassName("user");
+    // 컴퓨터 이미지
+    let comImg = document.getElementById("comImg");
+
+    let score = document.getElementById('score');
+
+    // 2. 버튼별로 이미지 변경
+    for(let i = 0;i<userBtns.length; i++){
+        userBtns[i].addEventListener("click", ()=>{
+            userImg.setAttribute('src', 'assets/'+imgs[i]);
+
+            // 3. 컴퓨터 이미지를 랜덤하게 변경
+            // 3-1) 0 ~ 2까지 랜덤한 숫자 만들기
+            let computer = Math.floor(Math.random() * 3)
+            // 3-2) 이미지 변경
+            comImg.setAttribute('src', `assets/${imgs[computer]}`);
+            
+            // 4. 사용자가 승리했다면 점수 1씩 증가시키기
+            /*
+            if((i == 0 && computer == 2) | (i == 1 && computer == 0) | (i == 2 && computer == 1)){
+                score.innerText++;
+            }
+            */
+            
+            // 원형구조: 0->1->2 -> 수학적 로직으로 바꾸기!
+            // user + 2 -> 2, 3, 4를 2, 0, 1
+            if ((i+2)%3 == computer){
+                score.innerText++;
+            }
+        })
+    }
+</script>
+</body>
+</html>

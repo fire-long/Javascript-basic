@@ -1,0 +1,47 @@
+body {
+    background-color: rgba(212, 236, 255, 0.469);
+}
+
+div {
+    margin: 300px auto;
+    width: 700px;
+    height: 400px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+}
+
+table {
+    display: inline;
+    margin: 0px auto;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    display: inline;
+    color: steelblue;
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+button {
+    background-color: steelblue;
+    color: white;
+    box-shadow: 1px 1px 3px 1px #dadce0;
+    border: 0px;
+    border-radius: 10px;
+    width: 60px;
+    height: 40px;
+    cursor: pointer;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgb(28, 54, 75);
+}
+
+#score{
+    font-size: 40px;
+    color: tomato;
+}

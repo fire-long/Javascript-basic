@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="data">
+    <button id="btn">클릭</button>
+    <script>
+        // input 태그 안에 있는 글자 가져오기
+        let data = document.getElementById('data');
+        let btn = document.getElementById('btn');
+
+        btn.onclick = () => {
+            // input 태그는 시작태그 끝내그가 따로 없는 단독태그!
+            // 안쪽에 든 글자를 가져오고자 value 속성을 사용해야 함!
+            console.log(data.value);
+            data.value = '';
+        }
+
+        
+
+
+    </script>
+</body>
+</html>

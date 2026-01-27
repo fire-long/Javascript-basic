@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id='img' src="https://pbs.twimg.com/media/EPeBH9uU4AEiDnL.jpg" alt="이미지">
+    <button id="btn">이미지 변경하기</button>
+    <script>
+        /*
+            JS DOM 속성 변경하기
+        */
+
+        //필요한 태그들 가져오기
+        let btn = document.getElementById("btn");
+        let img = document.getElementById("img");
+
+        btn.addEventListener("click", ()=>{
+            // 이미지 변경하기
+            // -> img 태그 src 속성 변경하기
+            
+            //(1) 태그명.속성명 -> 직접 접근(오탈자 나면 에러도 안 나고 동작이 안 될 뿐임. 비추천.)
+            //img.src = 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201408/14/htm_20140814134930a6003011.jpg'
+
+            //(2) 태그명.setAttribute("속성명", "변경할 값") -> "추천"
+            //함수 안쪽에 기본적으로 속성명이 없으면 에러가 뜨게끔 기본적인 설정이 있음
+            img.setAttribute('src', 'https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/201408/14/htm_20140814134930a6003011.jpg')
+
+        })
+
+
+    </script>
+    
+</body>
+</html>
