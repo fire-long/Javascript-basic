@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/moveImgStyle.css">
+</head>
+<body>
+    <div id="bg">
+        <img id='img' src='img/horse.png'>
+        <button class='btn left'>LEFT</button>
+        <button class='btn right'>RIGHT</button>
+    </div>
+    
+    <script>
+        //키보드에서 화살표 우측 방향키 누를 때 말 이미지 오른쪽으로 50px 이동시키기
+        let num = 0;
+        // 1. 필요한 태그 꺼내오기
+        let img = document.getElementById('img');
+
+        // 2. 이벤트 처리하기
+        document.addEventListener('keydown', (e)=>{
+            console.log(e.keyCode);
+            if (e.keyCode == 37){
+                //화살표 방향키를 눌렀다면(조건을 검사했다면?)
+                //이미지 스타일 변경하기(이동하기)
+                if (num > 0){num -= 50};
+                img.style.left = `${num}px`;
+            } else if (e.keyCode == 39){
+                if (num < 1200){num += 50};
+                img.style.left = `${num}px`;
+            }
+        })
+    </script>
+</body>
+</html>

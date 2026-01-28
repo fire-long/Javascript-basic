@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="data">
+    <script>
+        // 키보드에 대한 이벤트 처리방법
+        // input 태그 안쪽에 글자를 입력할 때마다,
+        // 입력된 글자를 가져와서 console 출력!
+
+        let data = document.getElementById("data");
+        // 한글 가져와서 처리해야할 때, 한글은 브라우저에서 인코딩 2번 일어남
+        // -> 이벤트 타입을 keydown이 아니라 "keyup"으로 설정하기!
+        data.addEventListener("keyup", (e)=>{
+            // 이벤트를 처리하는 콜백함수 내부에 매개변수를 받아오겠다고 지정하면
+            // 발생한 이벤트의 정보를 가진 객체를 넘겨줌
+            console.log(e);
+            
+            //console.log(data.value);
+        })
+    </script>
+</body>
+</html>

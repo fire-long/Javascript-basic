@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <button id="btn">클릭</button>
+    <div id="area"></div>
+    <script>
+        //JS 노드 생성: DOM을 활용해서 새로운 태그 추가
+        let text = document.getElementById("text");
+        let btn = document.getElementById("btn");
+        let area = document.getElementById("area");
+
+        btn.addEventListener("click", ()=>{
+            // 기존에 작성했던 방식
+            let data = text.value;
+            //area.innerHTML = `<ul>
+            //    <li>${data}</li>
+            //</ul>`;
+
+            // 태그를 생성하는 방법(새로운 방법!): DOM 사용
+            let ul = document.createElement('ul');
+            let li = document.createElement('li');
+            li.innerText = data;
+            ul.append(li);
+            area.append(ul);
+
+            // 요소를 조작하는 함수
+            // <ul>
+            //  <li>data1</li>
+            //  <li>data2</li>
+            // </ul>
+            // <li>data</li>
+            // (1) append
+            // : 대상이 되는 태그의 콘텐츠 영역 기준으로, 뒤쪽에 차근차근 하나씩 요소를 붙일 수 있는 기능
+            // (2) prepend
+            // : 대상이 되는 태그의 콘텐츠 영역 기준으로, 앞쪽에 차근차근 하나씩 요소를 붙일 수 있는 기능
+            // (3) after
+            // : 대상이 되는 태그의 "바깥쪽" 뒤쪽에 요소를 붙일 수 있는 기능
+            // (4) before
+            // : 대상이 되는 태그의 "바깥쪽" 앞쪽에 요소를 붙일 수 있는 기능
+        })
+    </script>
+</body>
+</html>

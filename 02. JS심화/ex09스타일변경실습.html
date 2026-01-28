@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div{
+            width: 100px;
+            height: 100px;
+            background-color:brown;
+            transition: all 2s 0s ease;
+        }
+
+        #div.circle{
+            border-radius: 50%;
+            background-color: yellow;
+            width: 100px;
+        }
+
+        #div.rectangle{
+            width: 200px;
+            border-radius: 0;
+            background-color: blue;
+        }
+
+        #div.square{
+            width: 100px;
+            border-radius: 0;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="div"></div>
+    <button>원</button>
+    <button>직사각형</button>
+    <button>정사각형</button>
+
+    <script>
+        let btns = document.getElementsByTagName('button');
+        let div = document.getElementById('div');
+        // 모양을 바꾸는 함수 생성하기
+        const setShape= (shape)=>{
+            div.classList.remove("circle", "rectangle", "square");
+            div.classList.add(shape);
+        }
+
+        btns[0].addEventListener("click", ()=>{
+            setShape('circle');
+            //div.classList.remove('circle', 'rectangle', 'square');
+            //div.classList.add("circle");
+        });
+        btns[1].addEventListener("click", ()=>{
+            setShape('rectangle');
+            //div.classList.remove('circle', 'rectangle', 'square');
+            //div.classList.add('rectangle');
+        });
+        btns[2].addEventListener("click", ()=>{
+            setShape('square');
+            //div.classList.remove('circle', 'rectangle', 'square');
+            //div.classList.add('square');
+        });
+
+    </script>
+</body>
+</html>

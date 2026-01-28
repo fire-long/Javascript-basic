@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/list.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <h2>To do list</h2>
+        <form onsubmit="return false">
+            <!--action이 실행되지 않도록 막는 속성-->
+            <input type="text" id="item" autofocus="true">
+            <button id="add" class="addBtn">추가</button>
+        </form>
+        <div id="itemList">
+            <!--<ul>
+                <li>자바스크립트 복습하기<span id="1" class="close">X</span></li>
+                <li>이력서 작성하기<span id="2" class="close">X</span></li>
+            </ul> -->
+        </div>
+    </div>
+
+    <script>
+        // To do list 만들어보기
+        // 0. 해야 할 일을 저장할, 빈 배열 생성
+        let list = [];
+
+        // 1. 필요한 태그들 가져오기: input, button, div
+        let item = document.getElementById('item');
+        let add = document.getElementById('add');
+        let itemList = document.getElementById('itemList');
+        ///////////////////////////////////////////////////
+        // 함수(1): 함수에 태그 요소들을 생성해서 보여주는 함수
+        //(그냥 버튼 내 버튼에서 코드 복붙해버리면 callback 함수의 효용이 없어짐)
+        const showitem = () => {
+            itemList.innerHTML = '';
+            // 5. 필요한 태그들 생성하기: ul, li 태그
+            // (이때 li 안쪽에는 input 태그에서 가져온 값을 글자로 넣기)
+            let ul = document.createElement('ul');
+            /*list.forEach(e => {
+                let li = document.createElement('li');
+                let span = document.createElement('span');
+
+                // span 태그 안쪽에 기본적인 글자와 디자인 세팅
+                span.innerText = "X";
+                span.classList.add("close");
+
+                li.innerText = e;
+                li.append(span);
+                ul.append(li);
+            })*/
+            for (let i = 0; i < list.length; i++){
+
+                let li = document.createElement('li');
+                let span = document.createElement('span');
+
+                // span 태그 안쪽에 기본적인 글자와 디자인 세팅
+                span.innerText = "X";
+                span.classList.add("close");
+
+                li.innerText = list[i];
+
+                span.addEventListener("click", ()=>{
+                    removeitem(i);
+                })
+
+                li.append(span);
+                ul.prepend(li); //최근에 추가한 데이터가 위쪽에 위치하게 됨
+            }
+            // 6. 조작함수를 사용해서 div 태그 안쪽에 추가하기
+            itemList.append(ul);
+        }
+
+        // 함수(2): 할 일을 삭제하는 함수 생성하기
+        function removeitem(i){
+            // 배열 안에 있는 데이터 삭제
+            list.splice(i, 1);
+            showitem(); //재귀함수
+        }
+
+        // 2. 버튼 클릭 시 이벤트 처리하기
+        add.addEventListener('click', ()=>{
+            // 3. input 태그 안쪽 값 가져오기
+            let temp = item.value;
+            // 4. input 태그 안쪽 값 비워주기
+            item.value = '';
+            // 배열에 해야할 일을 추가하기
+            list.push(temp);
+            showitem();
+        })
+    </script>
+</body>
+
+</html>
