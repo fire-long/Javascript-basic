@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="date" id="date">
+    <button id="btn">데이터 요청하기</button>
+    <script>
+        // 영화진흥위원회 api를 사용하여 
+        // fetch 통신으로 받아온 데이터로
+        // 테이블 태그 생성하기
+
+
+        // 1.필요한 태그들 가져오기
+        let btn = document.getElementById('btn');
+        let date = document.getElementById('date');
+
+        // 2. 버튼 클릭 시 이벤트 처리하기
+        btn.addEventListener("click", ()=>{
+            let url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json';
+            let key = '?key={키 값}';      
+            // 3. input 태그에 입력된 값 가져와서 요청 url 설정하기    
+            let targetDt = `&targetDt=${date.value.replaceAll('-', '')}`;
+            const finalurl = url + key + targetDt;
+            
+            // 4. 영화진흥위원회 api로 비동기 통신 요청하기
+            fetch(finalurl)
+            .then((res)=>res.json())
+            .then((data)=>{
+                    // 5. 요청 성공했을 때 테이블 생성하기
+                    // 5-1) table, tr, td 태그 모두 생성
+                
+                    const movieList = data.boxOfficeResult.dailyBoxOfficeList;
+                    
+                    // 특정 태그 요소 삭제하기
+                    // 태그명.nextElementSibling : 특정 태그 바로 다음에 있는 형제 태그를 지칭
+                    // .remove() : 태그 요소 삭제
+                    if (btn.nextElementSibling != null){
+                        btn.nextElementSibling.remove();
+                    }
+
+                    let table = document.createElement("table");
+                    table.border = "1";
+                    
+                    movieList.forEach(e => {
+                        // 5-2) 우리가 받아온 영화 개수만큼 반복하면서 tr 태그 생성하기
+                        let tr = document.createElement("tr");
+                        let td1 = document.createElement('td');
+                        let td2 = document.createElement('td');
+                        
+                        // 5-3) td 태그 안쪽에, 받아온 데이터 중 랭킹, 영화 이름 넣어주기
+                        td1.innerText = e.rank;
+                        td2.innerText = e.movieNm;
+                        tr.append(td1, td2);
+                        
+                        table.append(tr);
+                    });
+                    btn.after(table); // 5-4) 원하는 위치에 해당 태그 넣어주기(조작함수 사용)
+                })
+                .catch((err)=>console.log(err))
+        })
+
+    </script>
+</body>
+</html>

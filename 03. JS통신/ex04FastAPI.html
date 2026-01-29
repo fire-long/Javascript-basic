@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <button id="btn">요청보내기</button>
+    <script>
+        // 1. 필요한 태그 꺼내오기
+        let text = document.getElementById("text");
+        let btn = document.getElementById("btn");
+        const url = 'http://127.0.0.1:8000/test';
+
+        // 2. 버튼 클릭 이벤트 처리하기
+        btn.addEventListener("click", async()=>{
+            // 3. 비동기 통신(fetch) 사용해서 python fastapi 서버로 요청 보내기
+            // -> async & await 써서 표현!
+            const res= await fetch(url);
+            const data = await res.json();
+            console.log(data);
+        })
+    </script>
+
+</body>
+</html>
