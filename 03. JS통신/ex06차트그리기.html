@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- https://data.gg.go.kr/portal/mainPage.do의 전세사기 발생건수 API 사용 -->
+
+    <button id="btn">데이터 요청하기</button>
+    <div style="width: 500px; height: 300px;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        //경기데이터드림 전세사기정보 데이터를 비동기통신을 사용하여 받아오기!
+        //console.log()로 어떤 형식인지 체크!
+        
+        //키 값이 만료되거나, type을 바꿀 수 있으니 따로 분리하고 final url을 만드는 게 좋음.
+        //-> url을 만드는 함수를 만드는 게 더 편리
+        const url = `https://openapi.gg.go.kr/TBJEONSEFRAUDCNTM`;
+        const key = '?KEY=f90f6c71ac6c4cec9c0900abe26b7ff3';
+        const type = '&Type=json';
+        const finalurl = url+key+type;
+
+        let btn = document.getElementById('btn');
+        btn.addEventListener("click", async()=>{
+            const res = await fetch(finalurl);
+            if (!res.ok){
+                const errtext = await res.text();
+                throw new Error(`에러 발생: ${errtext}`);
+            }
+            const data = await res.json();
+
+            const resultList = data.TBJEONSEFRAUDCNTM[1].row;
+
+            // JS 배열 함수를 사용해서 내가 필요한 데이터 뽑아오기
+            const suwonData = resultList.filter(data => data.SIGNU_NM == '수원시');
+            //e.g. 0번에 있는 데이터 객체가 data로서 뽑힘 -> 전체 데이터만큼 반복
+            //여기선 수원시인 데이터만 뽑아옴!
+
+            //실무에서 많이 쓰는 코드가 아래!
+            const labels = suwonData.map(data => data.YR); //년도만 뽑힘
+            const dataset = suwonData.map(data => data.OCCUR_NOC); //빈도만 뽑힘
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                // 차트 종류 지정 
+                type: 'bar',
+                // 차트안에 들어갈 데이터를 세팅 
+                // -> 데이터는 차트 종류에따라 모양이 다를 수 있다! 
+                // -> 공식홈페이지에서 항상 데이터 모양은 확인하자!
+                data: {
+                    // x축 라벨 값 세팅
+                    labels: labels,
+                    // y축 값 세팅 
+                    datasets: [{
+                        // y축 제목
+                        label: '# of Votes',
+                        // y축 데이터
+                        data: dataset,
+                        borderWidth: 1
+                    }]
+                },
+                // 차트의 디자인 옵션 설정
+                // ex) 색깔 지정, 축 간격 etc...
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        })
+        
+    </script>
+</body>
+</html>

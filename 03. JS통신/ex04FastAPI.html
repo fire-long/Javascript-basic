@@ -12,15 +12,39 @@
         // 1. 필요한 태그 꺼내오기
         let text = document.getElementById("text");
         let btn = document.getElementById("btn");
-        const url = 'http://127.0.0.1:8000/test';
+        
 
         // 2. 버튼 클릭 이벤트 처리하기
         btn.addEventListener("click", async()=>{
+            // (1)input 태그 안쪽의 데이터를 꺼내오기
+            let senddata = text.value;
+
+            btn.disabled = true; // 한 번 누르면 동작하지 않도록!
+
             // 3. 비동기 통신(fetch) 사용해서 python fastapi 서버로 요청 보내기
             // -> async & await 써서 표현!
-            const res= await fetch(url);
-            const data = await res.json();
-            console.log(data);
+            const url = `http://127.0.0.1:8000/test?senddata=${senddata}`;
+            
+            //(2) url에 꺼내온 데이터를 포함시켜서 전송
+            // key값을 senddata, value 값은 꺼내온 데이터
+            try{
+                const res= await fetch(url);
+                // res 상태값 확인
+                if (!res.ok){
+                    const errtext = await res.text();
+                    //에러를 catch 영역으로 던지는 방법
+                    throw new Error(`에러발생 : ${errtext}`);
+                }
+                const data = await res.json();
+                console.log(data);
+
+                let img = document.createElement('img');
+                img.setAttribute('src', data.result);
+                btn.after(img);
+
+            } catch(err){
+                console.log(err);
+            }
         })
     </script>
 
